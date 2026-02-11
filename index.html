@@ -198,10 +198,10 @@
                                     <tr>
                                         <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider w-[250px] md:w-auto min-w-[200px]">Interface Section</th>
                                         ${RACI_DATA.roles.map(role => `
-                                            <th class="px-3 py-4 text-center text-xs font-bold uppercase tracking-wider w-[90px] ${selectedRole === role.id ? 'bg-blue-50/50' : ''}">
+                                            <th class="px-2 py-4 text-center text-xs font-bold uppercase tracking-wider w-[120px] ${selectedRole === role.id ? 'bg-blue-50/50' : ''}">
                                                 <div class="flex flex-col items-center">
                                                     <span class="${selectedRole === role.id ? 'text-tsp-blue' : 'text-slate-400'}">${role.name}</span>
-                                                    <span class="font-normal normal-case opacity-60 text-[9px] truncate max-w-[80px]">${role.fullName}</span>
+                                                    <span class="font-normal normal-case opacity-60 text-[9px] leading-tight mt-1">${role.fullName}</span>
                                                 </div>
                                             </th>
                                         `).join('')}
