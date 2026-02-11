@@ -1,0 +1,67 @@
+:root {
+  --tsp-blue: #0f5381;
+  --tsp-blue-light: #166ca6;
+  --tsp-blue-dark: #0a3a5a;
+  --tsp-bg: #f8fafc;
+  --r-color: #3b82f6; /* Blue */
+  --a-color: #ef4444; /* Red */
+  --c-color: #f59e0b; /* Amber */
+  --i-color: #10b981; /* Emerald */
+}
+
+body {
+  background-color: var(--tsp-bg);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #1e293b;
+}
+
+.tsp-gradient {
+  background: linear-gradient(135deg, var(--tsp-blue) 0%, var(--tsp-blue-light) 100%);
+}
+
+.raci-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: white;
+}
+
+.tag-R { background-color: var(--r-color); }
+.tag-A { background-color: var(--a-color); }
+.tag-C { background-color: var(--c-color); }
+.tag-I { background-color: var(--i-color); }
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: white;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSP RACI Matrix | SAP SuccessFactors Integration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="tsp-gradient text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-4">
+                <div class="bg-white p-2 rounded-lg shadow-inner">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1279 374.47" height="32">
+                        <path
+                            d="M682.49 466.07V276.59a108.61 108.61 0 0 1 20.94 11.53Q739 313.37 739 364.41q0 28.3-8.88 51a90.37 90.37 0 0 1-28.3 38.29 113.33 113.33 0 0 1-19.28 12.32Zm0-254.81h426q26.64 0 41.34 11.38t14.7 30.8q0 19.41-14.7 31.07t-41.34 11.65H788.88v189.77h114.31v-94.88h194.2q43.29 0 77.13-10t57.48-27.74a117.28 117.28 0 0 0 35.79-43q12.19-25.24 12.2-56.32t-12.2-56.6a122.58 122.58 0 0 0-35.52-43.83q-23.29-18.31-57.15-28.58t-77.13-10.26h-397.6L682.49 138Zm-413.34-70.94q3.17-2.88 6.57-5.55A133.18 133.18 0 0 1 304.29 118h-35.14v22.34Zm0 276.14 20.88-27v-58.79a119.7 119.7 0 0 1-18.08-12c-.95-.76-1.88-1.54-2.8-2.33v100.12ZM682.49 138v73.3H626l56.49-73.3Zm0 138.63v189.44a160.13 160.13 0 0 1-30.38 11.53q-30.24 8.34-72.41 8.33H269.15v-45.45l20.88-27 14.7-19 3.08-4h280.76q20.53 0 30-6.38t9.43-20.8q0-14.43-9.43-20.53t-30-6.1h-202q-36.08 0-62.15-7.77a151.36 151.36 0 0 1-19.72-7.32 117.83 117.83 0 0 1-14.7-8 100.89 100.89 0 0 1-8.86-6.36 89.8 89.8 0 0 1-12-11.66v-134a96.44 96.44 0 0 1 15.63-15.29q19.14-15 49.38-23.31a207.84 207.84 0 0 1 24.33-4.96h320.85l-71.84 93.28H397.7q-15.3 0-24.59 3.26a30.84 30.84 0 0 0-5.1 2.3 18.36 18.36 0 0 0-8.9 12.4 32.85 32.85 0 0 0-.81 7.57q0 14.43 9.71 20.25t29.69 5.83h202q50.3-.02 82.79 13.7ZM243 176.9a105 105 0 0 1 26.18-36.58V118H75.3L.94 214.52h174.24v274.67h37.73l56.24-72.73V316.37a99.69 99.69 0 0 1-27-37c-6.61-15.66-9.48-32.33-9.48-49.28 0-18.32 3.11-36.34 10.34-53.23Zm26.18-15.26v134a83.78 83.78 0 0 1-13.5-21.91q-8.33-19.69-8.32-43.56 0-26.07 9.15-47.44a89.24 89.24 0 0 1 12.67-21.05Zm0 278.84v45.45H234Z"
+                            transform="translate(-.94 -114.72)" style="fill: rgb(15, 83, 129); fill-rule: evenodd;">
+                        </path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight line-height-tight">RACI Governance Matrix</h1>
+                    <p class="text-blue-100 text-sm opacity-90">SAP SuccessFactors Integration Projects</p>
+                </div>
+            </div>
+            <div class="flex gap-2">
+                <span id="date-display"
+                    class="bg-white/10 px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm">Feb 2026</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Legend Section -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8" id="legend-container">
+            <!-- Dynamic Legend -->
+        </div>
+
+        <!-- Filters Section -->
+        <div class="glass-card rounded-xl p-6 mb-8 flex flex-col md:flex-row gap-6 items-end">
+            <div class="flex-1 w-full text-slate-700">
+                <label for="section-filter"
+                    class="block text-xs font-bold uppercase tracking-wider mb-2 opacity-70">Document Section</label>
+                <select id="section-filter"
+                    class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-tsp-blue/20 transition-all cursor-pointer">
+                    <option value="All">All Sections</option>
+                </select>
+            </div>
+            <div class="flex-1 w-full text-slate-700">
+                <label for="role-filter" class="block text-xs font-bold uppercase tracking-wider mb-2 opacity-70">Focus
+                    Role</label>
+                <select id="role-filter"
+                    class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-tsp-blue/20 transition-all cursor-pointer">
+                    <option value="All">All Roles</option>
+                </select>
+            </div>
+            <button id="reset-filters"
+                class="w-full md:w-auto px-6 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold rounded-lg transition-colors flex items-center justify-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                    <path d="M3 3v5h5" />
+                </svg>
+                Reset
+            </button>
+        </div>
+
+        <!-- Matrix Sections -->
+        <div id="sections-container" class="space-y-8">
+            <!-- Dynamic Sections -->
+        </div>
+
+        <!-- Observations -->
+        <div class="mt-12 bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-tsp-blue">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="text-amber-500">
+                    <path d="M12 2v10" />
+                    <path d="m16 8-4 4-4-4" />
+                    <path d="M4 22h16" />
+                </svg>
+                Enterprise-Level Observations
+            </h2>
+            <div id="observations-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Dynamic Observations -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-12 py-8 border-t border-slate-200 text-center text-sm text-slate-500">
+        <p>© 2026 TSP Company. All rights reserved.</p>
+        <p class="mt-1">Proprietary Governance Model for Integration Documentation.</p>
+    </footer>
+
+    <!-- Templates -->
+    <template id="role-header-template">
+        <th class="px-3 py-4 text-center text-xs font-bold text-slate-500 uppercase tracking-wider min-w-[80px]">
+            <div class="flex flex-col items-center">
+                <span class="role-name text-tsp-blue"></span>
+                <span class="role-desc font-normal normal-case opacity-60 text-[10px]"></span>
+            </div>
+        </th>
+    </template>
+
+    <script src="raci-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const legendContainer = document.getElementById('legend-container');
+            const sectionsContainer = document.getElementById('sections-container');
+            const sectionFilter = document.getElementById('section-filter');
+            const roleFilter = document.getElementById('role-filter');
+            const resetBtn = document.getElementById('reset-filters');
+
+            // Populate Filter Options
+            RACI_DATA.sections.forEach(s => {
+                const opt = document.createElement('option');
+                opt.value = s.title;
+                opt.textContent = s.title;
+                sectionFilter.appendChild(opt);
+            });
+
+            RACI_DATA.roles.forEach(r => {
+                const opt = document.createElement('option');
+                opt.value = r.id;
+                opt.textContent = `${r.name} (${r.fullName})`;
+                roleFilter.appendChild(opt);
+            });
+
+            // Tooltip mapping
+            const tooltipMap = RACI_DATA.legend.reduce((acc, item) => {
+                acc[item.key] = `${item.key} = ${item.name}: ${item.description}`;
+                return acc;
+            }, {});
+
+            // Render Legend
+            function renderLegend() {
+                legendContainer.innerHTML = '';
+                RACI_DATA.legend.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'glass-card rounded-lg p-4 flex items-center gap-4 border-l-4';
+                    div.style.borderLeftColor = getComputedStyle(document.documentElement).getPropertyValue('--' + item.key.toLowerCase() + '-color');
+                    div.innerHTML = `
+                        <div class="raci-tag tag-${item.key}">${item.key}</div>
+                        <div>
+                            <div class="font-bold text-sm text-slate-800">${item.name}</div>
+                            <div class="text-xs text-slate-500">${item.description}</div>
+                        </div>
+                    `;
+                    legendContainer.appendChild(div);
+                });
+            }
+
+            // Render Matrix
+            function renderMatrix() {
+                const selectedSection = sectionFilter.value;
+                const selectedRole = roleFilter.value;
+
+                sectionsContainer.innerHTML = '';
+
+                RACI_DATA.sections.forEach(section => {
+                    // Filter by section
+                    if (selectedSection !== 'All' && section.title !== selectedSection) return;
+
+                    // Filter items by role (if a role is selected, show only items where that role is R, A, or C - hide 'I' for focus)
+                    const filteredItems = section.items.filter(item => {
+                        if (selectedRole === 'All') return true;
+                        // Focus on active roles (R, A, C) or just show if they have any role
+                        // User said "Filter by Role", let's show rows where the role is NOT "I" to make it useful
+                        return item[selectedRole] !== 'I';
+                    });
+
+                    if (filteredItems.length === 0 && selectedRole !== 'All') return;
+
+                    const sectionDiv = document.createElement('div');
+                    sectionDiv.className = 'bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow animate-in fade-in slide-in-from-bottom-2 duration-300';
+
+                    let tableHtml = `
+                        <div class="px-6 py-4 bg-slate-50 border-b border-slate-200 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                            <h3 class="font-bold text-slate-800">${section.title}</h3>
+                            ${section.footnote ? `<span class="text-xs italic text-slate-500">${section.footnote}</span>` : ''}
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse table-fixed">
+                                <thead class="bg-white sticky-header shadow-sm font-semibold text-slate-600">
+                                    <tr>
+                                        <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider w-[250px] md:w-auto min-w-[200px]">Interface Section</th>
+                                        ${RACI_DATA.roles.map(role => `
+                                            <th class="px-3 py-4 text-center text-xs font-bold uppercase tracking-wider w-[90px] ${selectedRole === role.id ? 'bg-blue-50/50' : ''}">
+                                                <div class="flex flex-col items-center">
+                                                    <span class="${selectedRole === role.id ? 'text-tsp-blue' : 'text-slate-400'}">${role.name}</span>
+                                                    <span class="font-normal normal-case opacity-60 text-[9px] truncate max-w-[80px]">${role.fullName}</span>
+                                                </div>
+                                            </th>
+                                        `).join('')}
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100">
+                    `;
+
+                    filteredItems.forEach(item => {
+                        tableHtml += `
+                            <tr class="hover:bg-blue-50/30 transition-colors">
+                                <td class="px-6 py-4 text-sm font-medium text-slate-700">${item.task}</td>
+                                ${RACI_DATA.roles.map(role => {
+                            const val = item[role.id];
+                            return `
+                                        <td class="px-3 py-4 text-center ${selectedRole === role.id ? 'bg-blue-50/50' : ''}">
+                                            <span class="raci-tag tag-${val} ${selectedRole === role.id ? 'ring-2 ring-tsp-blue/20 ring-offset-1' : 'opacity-80'}" title="${tooltipMap[val] || ''}">${val}</span>
+                                        </td>
+                                    `;
+                        }).join('')}
+                            </tr>
+                        `;
+                    });
+
+                    tableHtml += `
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+
+                    sectionDiv.innerHTML = tableHtml;
+                    sectionsContainer.appendChild(sectionDiv);
+                });
+
+                // Handle empty state
+                if (sectionsContainer.innerHTML === '') {
+                    sectionsContainer.innerHTML = `
+                        <div class="bg-white rounded-xl border border-dashed border-slate-300 p-12 text-center">
+                            <div class="text-slate-400 mb-2 font-medium">No results found matching these filters</div>
+                            <button onclick="document.getElementById('reset-filters').click()" class="text-tsp-blue font-bold hover:underline">Clear all filters</button>
+                        </div>
+                    `;
+                }
+            }
+
+            // Events
+            sectionFilter.addEventListener('change', renderMatrix);
+            roleFilter.addEventListener('change', renderMatrix);
+            resetBtn.addEventListener('click', () => {
+                sectionFilter.value = 'All';
+                roleFilter.value = 'All';
+                renderMatrix();
+            });
+
+            // Initial Load
+            renderLegend();
+            renderMatrix();
+
+            // Render Observations (once)
+            const obsContainer = document.getElementById('observations-container');
+            obsContainer.innerHTML = '';
+            RACI_DATA.observations.forEach(obs => {
+                const div = document.createElement('div');
+                div.className = 'flex gap-3 p-4 bg-slate-50 rounded-lg border border-slate-100';
+                div.innerHTML = `
+                    <div class="flex-shrink-0 mt-0.5">
+                        <svg class="text-tsp-blue" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    </div>
+                    <p class="text-sm text-slate-700 leading-relaxed">${obs}</p>
+                `;
+                obsContainer.appendChild(div);
+            });
+        });
+    </script>
+</body>
+
+</html>
