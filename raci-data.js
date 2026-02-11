@@ -37,9 +37,9 @@ const RACI_DATA = {
       items: [
         { task: "Overview", ia: "R", sfsa: "C", sffc: "C", inttc: "I", pm: "A" },
         { task: "Process Description", ia: "C", sfsa: "R", sffc: "R", inttc: "I", pm: "A" },
-        { task: "Process Flow", ia: "R", sfsa: "C", sffc: "C", inttc: "I", pm: "A" },
-        { task: "Assumptions", ia: "R", sfsa: "C", sffc: "C", inttc: "I", pm: "A" },
-        { task: "Dependencies", ia: "R", sfsa: "C", sffc: "C", inttc: "I", pm: "A" },
+        { task: "Process Flow", ia: "C", sfsa: "R", sffc: "C", inttc: "I", pm: "A" },
+        { task: "Assumptions", ia: "C", sfsa: "R", sffc: "C", inttc: "I", pm: "A" },
+        { task: "Dependencies", ia: "C", sfsa: "R", sffc: "C", inttc: "I", pm: "A" },
         { task: "Mapping Logic (Summary)", ia: "C", sfsa: "R", sffc: "R", inttc: "I", pm: "A" },
         { task: "Monitoring Strategy", ia: "R", sfsa: "I", sffc: "I", inttc: "C", pm: "A" },
         { task: "Error Handling", ia: "R", sfsa: "I", sffc: "I", inttc: "C", pm: "A" },
