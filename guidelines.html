@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Guidelines | RACI Matrix</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .guideline-section {
+            border-left: 4px solid var(--tsp-blue);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .guideline-section:hover {
+            box-shadow: 0 6px 12px -2px rgb(0 0 0 / 0.15) !important;
+        }
+        .guideline-subsection {
+            margin-left: 1rem;
+        }
+        .requirement-list li {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+        }
+        .common-mistake {
+            background-color: #fef2f2;
+            border-left: 3px solid #ef4444;
+        }
+        .must-fill {
+            background-color: #f0f9ff;
+            border-left: 3px solid #0284c7;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .section-emoji {
+            font-size: 1.5rem;
+        }
+        .collapsible-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            cursor: pointer;
+            user-select: none;
+        }
+        .collapsible-header h3 {
+            flex: 1;
+            margin: 0;
+        }
+        .toggle-icon {
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+            color: var(--tsp-blue);
+        }
+        .toggle-icon.collapsed {
+            transform: rotate(-90deg);
+        }
+        .collapsible-content {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+        .collapsible-content.collapsed {
+            display: none;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="tsp-gradient text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="bg-white p-2 rounded-lg shadow-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1279 374.47" height="32">
+                            <path
+                                d="M682.49 466.07V276.59a108.61 108.61 0 0 1 20.94 11.53Q739 313.37 739 364.41q0 28.3-8.88 51a90.37 90.37 0 0 1-28.3 38.29 113.33 113.33 0 0 1-19.28 12.32Zm0-254.81h426q26.64 0 41.34 11.38t14.7 30.8q0 19.41-14.7 31.07t-41.34 11.65H788.88v189.77h114.31v-94.88h194.2q43.29 0 77.13-10t57.48-27.74a117.28 117.28 0 0 0 35.79-43q12.19-25.24 12.2-56.32t-12.2-56.6a122.58 122.58 0 0 0-35.52-43.83q-23.29-18.31-57.15-28.58t-77.13-10.26h-397.6L682.49 138Zm-413.34-70.94q3.17-2.88 6.57-5.55A133.18 133.18 0 0 1 304.29 118h-35.14v22.34Zm0 276.14 20.88-27v-58.79a119.7 119.7 0 0 1-18.08-12c-.95-.76-1.88-1.54-2.8-2.33v100.12ZM682.49 138v73.3H626l56.49-73.3Zm0 138.63v189.44a160.13 160.13 0 0 1-30.38 11.53q-30.24 8.34-72.41 8.33H269.15v-45.45l20.88-27 14.7-19 3.08-4h280.76q20.53 0 30-6.38t9.43-20.8q0-14.43-9.43-20.53t-30-6.1h-202q-36.08 0-62.15-7.77a151.36 151.36 0 0 1-19.72-7.32 117.83 117.83 0 0 1-14.7-8 100.89 100.89 0 0 1-8.86-6.36 89.8 89.8 0 0 1-12-11.66v-134a96.44 96.44 0 0 1 15.63-15.29q19.14-15 49.38-23.31a207.84 207.84 0 0 1 24.33-4.96h320.85l-71.84 93.28H397.7q-15.3 0-24.59 3.26a30.84 30.84 0 0 0-5.1 2.3 18.36 18.36 0 0 0-8.9 12.4 32.85 32.85 0 0 0-.81 7.57q0 14.43 9.71 20.25t29.69 5.83h202q50.3-.02 82.79 13.7ZM243 176.9a105 105 0 0 1 26.18-36.58V118H75.3L.94 214.52h174.24v274.67h37.73l56.24-72.73V316.37a99.69 99.69 0 0 1-27-37c-6.61-15.66-9.48-32.33-9.48-49.28 0-18.32 3.11-36.34 10.34-53.23Zm26.18-15.26v134a83.78 83.78 0 0 1-13.5-21.91q-8.33-19.69-8.32-43.56 0-26.07 9.15-47.44a89.24 89.24 0 0 1 12.67-21.05Zm0 278.84v45.45H234Z"
+                                transform="translate(-.94 -114.72)" style="fill: rgb(15, 83, 129); fill-rule: evenodd;">
+                            </path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold tracking-tight">Section Guidelines</h1>
+                        <p class="text-blue-100 text-sm opacity-90">What Each Section Must Have • Click to Expand/Collapse</p>
+                    </div>
+                </div>
+                <a href="index.html"
+                    class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-colors backdrop-blur-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    Back to Matrix
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+        <!-- Introduction -->
+        <div class="glass-card rounded-xl p-8 mb-12 border border-slate-200 shadow-sm">
+            <div class="prose prose-sm max-w-none text-slate-700">
+                <h2 class="text-2xl font-bold text-tsp-blue mb-4 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="text-amber-500">
+                        <path d="M9 11l3 3L22 4"></path>
+                        <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Team-Oriented Completion Guide
+                </h2>
+                <p class="text-base leading-relaxed">
+                    This guide removes ambiguity during delivery by clearly defining what each section requires. <strong>Click any section to expand or collapse.</strong> Every
+                    section follows the same structure: <strong>What it's for</strong> → <strong>What must be
+                        filled</strong> → <strong>Common mistakes to avoid</strong>.
+                </p>
+                <p class="text-sm text-slate-600 mt-4 mb-0">
+                    The tone and depth should be practical and operational, not theoretical.
+                </p>
+            </div>
+        </div>
+
+        <!-- GLOBAL SECTIONS -->
+        <div class="mb-12">
+            <div class="section-header mb-8">
+                <span class="section-emoji">📘</span>
+                <h2 class="text-3xl font-bold text-tsp-blue">Global Sections</h2>
+            </div>
+
+            <!-- Document Roles -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Document Roles</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Defines ownership and approval chain for the document.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Author (who writes it)</li>
+                                <li>Reviewer (architecture + functional)</li>
+                                <li>Approver (usually PM or Architecture Lead)</li>
+                                <li>Date</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Leaving reviewers blank</li>
+                                <li>Not updating when ownership changes</li>
+                                <li>No formal approval before Realize</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Document Status -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Document Status</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Indicates whether the document is ready for build.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Status (Draft / In Review / Approved)</li>
+                                <li>Version number</li>
+                                <li>Approval date</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Starting development while status is still "Draft"</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Version History -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Version History</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Tracks document changes.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Version</li>
+                                <li>Date</li>
+                                <li>Author</li>
+                                <li>Summary of changes</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Updating content without updating version history</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OVERVIEW SECTION -->
+        <div class="mb-12">
+            <div class="section-header mb-8">
+                <span class="section-emoji">📄</span>
+                <h2 class="text-3xl font-bold text-tsp-blue">Overview</h2>
+            </div>
+
+            <!-- Interface Title -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Interface Title</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Clear identification of the interface.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Source system</li>
+                                <li>Target system</li>
+                                <li>Direction</li>
+                                <li>Business context</li>
+                            </ul>
+                        </div>
+                        <div class="bg-green-50 border-l-3 border-green-500 p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Example</h4>
+                            <p class="text-slate-600 font-mono text-sm">"SuccessFactors Employee Data → SAP S/4HANA (Outbound, Daily Delta)"</p>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Using technical iFlow name only</li>
+                                <li>Not specifying direction</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Information -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Project Information</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Administrative context.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Project name</li>
+                                <li>Environment scope</li>
+                                <li>Integration platform used</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Not updating when project phase changes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Members -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Project Members</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Clarifies who owns what.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>IA</li>
+                                <li>SF SA</li>
+                                <li>SF Functional</li>
+                                <li>Integration Technical</li>
+                                <li>PM</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Not aligning names with actual delivery team</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXPLORE - FUNCTIONAL SPECIFICATION -->
+        <div class="mb-12">
+            <div class="section-header mb-8">
+                <span class="section-emoji">🔎</span>
+                <h2 class="text-3xl font-bold text-tsp-blue">EXPLORE – Functional Specification</h2>
+            </div>
+
+            <!-- Overview -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Overview</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Explains why the integration exists.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Business objective</li>
+                                <li>Business process impacted</li>
+                                <li>Expected business outcome</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Writing technical details instead of business purpose</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Process Description -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Process Description</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Explains the end-to-end business scenario.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Trigger event</li>
+                                <li>Data involved</li>
+                                <li>Expected business behavior</li>
+                                <li>Exception handling (business level)</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Not describing exceptions</li>
+                                <li>Not explaining when integration should NOT trigger</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Process Flow -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Process Flow</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Visual/logical flow of integration steps.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Source extraction</li>
+                                <li>Middleware processing</li>
+                                <li>Target update</li>
+                                <li>Error path</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Skipping middleware logic</li>
+                                <li>No indication of trigger type</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assumptions -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Assumptions</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Declares conditions that must be true.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Data readiness</li>
+                                <li>Required configurations</li>
+                                <li>Security prerequisites</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Leaving generic statements like "standard configuration assumed"</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dependencies -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Dependencies</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Identifies cross-team impact.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Other interfaces</li>
+                                <li>Network/security setup</li>
+                                <li>Third-party dependencies</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Not listing dependencies until testing phase</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mapping Logic (Summary) -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Mapping Logic (Summary)</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">High-level transformation explanation.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Filtering logic</li>
+                                <li>Default values</li>
+                                <li>Mandatory checks</li>
+                                <li>Delta mechanism</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Copy-pasting mapping table here</li>
+                                <li>Not explaining delta logic</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monitoring Strategy -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Monitoring Strategy</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Defines operational monitoring model.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Monitoring tool</li>
+                                <li>Alerting mechanism</li>
+                                <li>Monitoring frequency</li>
+                                <li>Responsible team</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Writing "CPI monitoring" without defining ownership</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Handling -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Error Handling</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Defines how failures are managed.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Retry policy</li>
+                                <li>Business vs technical errors</li>
+                                <li>Reprocessing method</li>
+                                <li>Escalation path</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>No retry definition</li>
+                                <li>No reprocessing strategy</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connectivity Settings -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Connectivity Settings</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Defines integration security and technical channel.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Protocol</li>
+                                <li>Authentication type</li>
+                                <li>Environment-specific endpoints</li>
+                                <li>Certificate responsibility</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Leaving this blank assuming "standard CPI setup"</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Appendix -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Appendix</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Reference material.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Sample payload</li>
+                                <li>API reference</li>
+                                <li>Screenshots</li>
+                                <li>Related documents</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Using it as a dumping ground</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXPLORE - OTHER SECTIONS -->
+        <div class="mb-12">
+            <div class="section-header mb-8">
+                <span class="section-emoji">🔢</span>
+                <h2 class="text-3xl font-bold text-tsp-blue">EXPLORE – Mapping & Testing</h2>
+            </div>
+
+            <!-- Field Mapping Table -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Field Mapping Table</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Defines detailed field-level transformation.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Source field</li>
+                                <li>Target field</li>
+                                <li>Mandatory flag</li>
+                                <li>Transformation rule</li>
+                                <li>Comments</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Missing transformation explanation</li>
+                                <li>Missing mandatory indicators</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Value Mapping Table -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Value Mapping Table</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Defines code conversions.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Source value</li>
+                                <li>Target value</li>
+                                <li>Description if needed</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Assuming values are identical without validation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testing Scenarios -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Testing Scenarios</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Defines what will be tested.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Scenario ID</li>
+                                <li>Input condition</li>
+                                <li>Expected result</li>
+                                <li>Negative test cases</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Only defining happy path</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REALIZE SECTIONS -->
+        <div class="mb-12">
+            <div class="section-header mb-8">
+                <span class="section-emoji">🛠</span>
+                <h2 class="text-3xl font-bold text-tsp-blue">REALIZE – Build & Testing</h2>
+            </div>
+
+            <!-- Compliance Checklist -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Compliance Checklist</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Quality gate before deployment.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Confirmation mapping approved</li>
+                                <li>Monitoring implemented</li>
+                                <li>Security validated</li>
+                                <li>Transport prepared</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Filling at end without real validation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Objects -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Technical Objects (CPI/ABAP)</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Documents built artifacts and their descriptions.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Package name</li>
+                                <li>iFlow/Object name</li>
+                                <li>Artifacts used</li>
+                                <li>What each object does</li>
+                                <li>Special configurations</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Not matching real object names</li>
+                                <li>Writing "standard mapping" without explanation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Log Register -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Error Log Register</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Tracks defects during build and hypercare.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Error description</li>
+                                <li>Root cause</li>
+                                <li>Resolution</li>
+                                <li>Status</li>
+                            </ul>
+                        </div>
+                        <div class="common-mistake p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Not updating after resolution</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testing Results -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Testing Results (Technical, Functional, UAT)</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Record testing execution evidence and sign-off.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li><strong>Technical:</strong> Execution evidence</li>
+                                <li><strong>Functional:</strong> Business validation</li>
+                                <li><strong>UAT:</strong> Final sign-off</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cloud Care Log -->
+            <div class="glass-card guideline-section rounded-lg p-6 mb-6 shadow-sm">
+                <div class="collapsible-header" onclick="toggleCollapse(this)">
+                    <h3 class="text-lg font-bold text-slate-800">Cloud Care Log</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="toggle-icon collapsed">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="collapsible-content collapsed">
+                    <div class="guideline-subsection space-y-4 mt-4">
+                        <div>
+                            <h4 class="font-semibold text-slate-700 mb-2">What this section is for</h4>
+                            <p class="text-slate-600">Post go-live issue tracking.</p>
+                        </div>
+                        <div class="must-fill p-4 rounded-md">
+                            <h4 class="font-semibold text-slate-700 mb-2">What must be filled</h4>
+                            <ul class="requirement-list text-slate-600 text-sm space-y-1">
+                                <li>Issue description</li>
+                                <li>Business impact</li>
+                                <li>Resolution taken</li>
+                                <li>Closure date</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CRITICAL RULE -->
+        <div class="mb-12 glass-card rounded-lg p-8 border-2 border-red-300 bg-red-50 shadow-md">
+            <div class="flex items-start gap-4">
+                <div class="text-3xl flex-shrink-0">🎯</div>
+                <div>
+                    <h2 class="text-2xl font-bold text-red-900 mb-4">Final Internal Rule: Quality Gate</h2>
+                    <p class="text-red-800 font-semibold mb-3">Before moving from EXPLORE to REALIZE, ALL of these must be complete:</p>
+                    <ul class="requirement-list text-red-800 font-semibold space-y-2">
+                        <li>✓ Mapping approved</li>
+                        <li>✓ Error handling defined</li>
+                        <li>✓ Monitoring defined</li>
+                        <li>✓ Connectivity validated</li>
+                        <li>✓ Test scenarios agreed</li>
+                    </ul>
+                    <p class="text-red-900 font-bold mt-6 text-lg border-t-2 border-red-300 pt-4">If one is incomplete → <span
+                            class="text-red-600 text-xl">BUILD MUST NOT START</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Navigation -->
+        <div class="flex justify-between items-center mt-16 pt-8 border-t border-slate-200">
+            <a href="index.html"
+                class="inline-flex items-center gap-2 px-6 py-3 bg-tsp-blue hover:bg-tsp-blue-light text-white font-semibold rounded-lg transition-colors shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+                Back to RACI Matrix
+            </a>
+            <p class="text-slate-500 text-sm">Last Updated: February 2026</p>
+        </div>
+    </main>
+
+    <script>
+        function toggleCollapse(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.toggle-icon');
+            
+            if (content && content.classList.contains('collapsible-content')) {
+                content.classList.toggle('collapsed');
+                icon.classList.toggle('collapsed');
+            }
+        }
+    </script>
+</body>
+
+</html>
