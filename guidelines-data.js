@@ -312,10 +312,8 @@ const GUIDELINES_DATA = {
                     title: "Compliance Checklist",
                     purpose: "Quality gate before deployment.",
                     mustFill: [
-                        "Confirmation mapping approved",
-                        "Monitoring implemented",
-                        "Security validated",
-                        "Transport prepared"
+                        "Entire checklist table should be completed",
+                        "SAP Cloud Integration design guidelines screenshot if applicable"
                     ],
                     commonMistakes: [
                         "Filling at end without real validation"
@@ -330,10 +328,13 @@ const GUIDELINES_DATA = {
                         "iFlow/Object name",
                         "Artifacts used",
                         "What each object does",
-                        "Special configurations"
+                        "Special configurations",
+                        "Job/Scheduler details",
+                        "Groovy or ABAP pseudo-code or description"
                     ],
                     commonMistakes: [
                         "Not matching real object names",
+                        "Pasting code extract screenshots or iFlows Screenshots",
                         "Writing \"standard mapping\" without explanation"
                     ]
                 },
@@ -369,7 +370,7 @@ const GUIDELINES_DATA = {
                 {
                     id: "cloud-care",
                     title: "Cloud Care Log",
-                    purpose: "Post go-live issue tracking.",
+                    purpose: "Post go-live changes tracking or defects resolutions.",
                     mustFill: [
                         "Issue description",
                         "Business impact",
@@ -384,12 +385,13 @@ const GUIDELINES_DATA = {
         title: "Final Internal Rule: Quality Gate",
         description: "Before moving from EXPLORE to REALIZE, ALL of these must be complete:",
         rules: [
+            "Functional Specification approved",
             "Mapping approved",
             "Error handling defined",
             "Monitoring defined",
             "Connectivity validated",
             "Test scenarios agreed"
         ],
-        failureMessage: "If one is incomplete → BUILD MUST NOT START"
+        failureMessage: "If one is incomplete → REALIZE MUST NOT START"
     }
 };
