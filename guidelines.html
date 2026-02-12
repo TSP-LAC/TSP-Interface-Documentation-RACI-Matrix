@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section Guidelines | RACI Matrix</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'tsp-blue': '#0f5381',
+                        'tsp-blue-light': '#166ca6',
+                        'tsp-blue-dark': '#0a3a5a',
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,24 +29,30 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
+
         .guideline-section:hover {
             box-shadow: 0 6px 12px -2px rgb(0 0 0 / 0.15) !important;
         }
+
         .guideline-subsection {
             margin-left: 1rem;
         }
+
         .requirement-list li {
             list-style-type: disc;
             margin-left: 1.5rem;
         }
+
         .common-mistake {
             background-color: #fef2f2;
             border-left: 3px solid #ef4444;
         }
+
         .must-fill {
             background-color: #f0f9ff;
             border-left: 3px solid #0284c7;
         }
+
         .section-header {
             display: flex;
             align-items: center;
@@ -41,9 +60,11 @@
             margin-top: 2rem;
             margin-bottom: 1rem;
         }
+
         .section-emoji {
             font-size: 1.5rem;
         }
+
         .collapsible-header {
             display: flex;
             align-items: center;
@@ -52,30 +73,37 @@
             cursor: pointer;
             user-select: none;
         }
+
         .collapsible-header h3 {
             flex: 1;
             margin: 0;
         }
+
         .toggle-icon {
             flex-shrink: 0;
             transition: transform 0.3s ease;
             color: var(--tsp-blue);
         }
+
         .toggle-icon.collapsed {
             transform: rotate(-90deg);
         }
+
         .collapsible-content {
             display: block;
             animation: slideDown 0.3s ease-out;
         }
+
         .collapsible-content.collapsed {
             display: none;
         }
+
         @keyframes slideDown {
             from {
                 opacity: 0;
                 transform: translateY(-10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -101,25 +129,7 @@
                     <div>
                         <h1 class="text-2xl font-bold tracking-tight">Section Guidelines</h1>
 
-                    <!-- Download Template -->
-                    <div class="glass-card rounded-xl p-6 mb-8 border border-slate-200 shadow-sm">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h3 class="font-semibold text-slate-800">Download Template</h3>
-                                <p class="text-sm text-slate-600">Download the workbook used for this documentation.</p>
-                            </div>
-                            <a href="INT_ID%20-%20Customer_Interface%20Description_Workbook_V2_Shared.xlsx" download class="inline-flex items-center gap-2 bg-tsp-blue text-white px-4 py-2 rounded-lg hover:opacity-90">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
-                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                                    <polyline points="7 10 12 15 17 10"/>
-                                    <line x1="12" y1="15" x2="12" y2="3"/>
-                                </svg>
-                                Download Workbook
-                            </a>
-                        </div>
                     </div>
-
-                    <!-- GLOBAL SECTIONS -->
                 </div>
                 <a href="index.html"
                     class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-colors backdrop-blur-sm">
@@ -134,26 +144,60 @@
     </header>
 
     <main class="container mx-auto px-4 py-12">
-        <!-- Introduction -->
-        <div class="glass-card rounded-xl p-8 mb-12 border border-slate-200 shadow-sm">
-            <div class="prose prose-sm max-w-none text-slate-700">
-                <h2 class="text-2xl font-bold text-tsp-blue mb-4 flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="text-amber-500">
-                        <path d="M9 11l3 3L22 4"></path>
-                        <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        <!-- Download Document CTA -->
+        <div
+            class="relative overflow-hidden bg-gradient-to-br from-slate-50 to-white rounded-2xl p-8 mb-12 border border-slate-200 shadow-xl group hover:shadow-2xl transition-all duration-300">
+            <div
+                class="absolute top-0 right-0 w-32 h-32 bg-tsp-blue/5 rounded-full -mr-16 -mt-16 group-hover:bg-tsp-blue/10 transition-colors duration-500">
+            </div>
+            <div
+                class="absolute bottom-0 left-0 w-24 h-24 bg-tsp-blue/5 rounded-full -ml-12 -mb-12 group-hover:bg-tsp-blue/10 transition-colors duration-500">
+            </div>
+
+            <div class="relative flex flex-col md:flex-row items-center gap-8">
+                <div
+                    class="flex-shrink-0 bg-green-50 p-6 rounded-2xl border border-green-100 shadow-inner group-hover:scale-105 transition-transform duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none"
+                        stroke="#16a34a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <path d="M8 13h2" />
+                        <path d="M8 17h2" />
+                        <path d="M14 13h2" />
+                        <path d="M14 17h2" />
                     </svg>
-                    Team-Oriented Completion Guide
-                </h2>
-                <p class="text-base leading-relaxed">
-                    This guide removes ambiguity during delivery by clearly defining what each section requires. <strong>Click any section to expand or collapse.</strong> Every
-                    section follows the same structure: <strong>What it's for</strong> → <strong>What must be
-                        filled</strong> → <strong>Common mistakes to avoid</strong>.
-                </p>
-                <p class="text-sm text-slate-600 mt-4 mb-0">
-                    The tone and depth should be practical and operational, not theoretical.
-                </p>
+                </div>
+
+                <div class="flex-grow text-center md:text-left">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-tsp-blue/10 text-tsp-blue text-xs font-bold uppercase tracking-wider mb-3">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tsp-blue opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-tsp-blue"></span>
+                        </span>
+                        Official Template
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-800 mb-2">Interface Description Workbook</h2>
+                    <p class="text-slate-600 max-w-xl leading-relaxed">
+                        Download the comprehensive Excel template designed to streamline your RACI matrix documentation.
+                        This workbook includes all sections required by these guidelines.
+                    </p>
+                </div>
+
+                <div class="flex-shrink-0">
+                    <a href="INT_ID - Customer_Interface Description_Workbook_V2_Shared.xlsx" download
+                        class="inline-flex items-center gap-3 bg-tsp-blue text-white px-8 py-4 rounded-xl font-semibold shadow-lg shadow-tsp-blue/20 hover:bg-tsp-blue-light hover:-translate-y-1 active:scale-95 transition-all duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        Download Template
+                    </a>
+                    <p class="text-center text-xs text-slate-400 mt-3 font-medium">Excel Format (.xlsx)</p>
+                </div>
             </div>
         </div>
 
@@ -305,7 +349,8 @@
                         </div>
                         <div class="bg-green-50 border-l-3 border-green-500 p-4 rounded-md">
                             <h4 class="font-semibold text-slate-700 mb-2">Example</h4>
-                            <p class="text-slate-600 font-mono text-sm">"SuccessFactors Employee Data → SAP S/4HANA (Outbound, Daily Delta)"</p>
+                            <p class="text-slate-600 font-mono text-sm">"SuccessFactors Employee Data → SAP S/4HANA
+                                (Outbound, Daily Delta)"</p>
                         </div>
                         <div class="common-mistake p-4 rounded-md">
                             <h4 class="font-semibold text-slate-700 mb-2">Common mistakes</h4>
@@ -1040,7 +1085,8 @@
                 <div class="text-3xl flex-shrink-0">🎯</div>
                 <div>
                     <h2 class="text-2xl font-bold text-red-900 mb-4">Final Internal Rule: Quality Gate</h2>
-                    <p class="text-red-800 font-semibold mb-3">Before moving from EXPLORE to REALIZE, ALL of these must be complete:</p>
+                    <p class="text-red-800 font-semibold mb-3">Before moving from EXPLORE to REALIZE, ALL of these must
+                        be complete:</p>
                     <ul class="requirement-list text-red-800 font-semibold space-y-2">
                         <li>✓ Mapping approved</li>
                         <li>✓ Error handling defined</li>
@@ -1048,8 +1094,9 @@
                         <li>✓ Connectivity validated</li>
                         <li>✓ Test scenarios agreed</li>
                     </ul>
-                    <p class="text-red-900 font-bold mt-6 text-lg border-t-2 border-red-300 pt-4">If one is incomplete → <span
-                            class="text-red-600 text-xl">BUILD MUST NOT START</span></p>
+                    <p class="text-red-900 font-bold mt-6 text-lg border-t-2 border-red-300 pt-4">If one is incomplete →
+                        <span class="text-red-600 text-xl">BUILD MUST NOT START</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -1072,7 +1119,7 @@
         function toggleCollapse(header) {
             const content = header.nextElementSibling;
             const icon = header.querySelector('.toggle-icon');
-            
+
             if (content && content.classList.contains('collapsible-content')) {
                 content.classList.toggle('collapsed');
                 icon.classList.toggle('collapsed');
