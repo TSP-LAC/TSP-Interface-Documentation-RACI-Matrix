@@ -23,6 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <script src="guidelines-data.js"></script>
     <style>
         .guideline-section {
@@ -214,7 +215,6 @@
                     html += `
                     <div class="mb-12">
                         <div class="section-header mb-8">
-                            <span class="section-emoji">${section.emoji}</span>
                             <h2 class="text-3xl font-bold text-tsp-blue">${section.title}</h2>
                         </div>
                         <div class="space-y-6">
@@ -266,7 +266,9 @@
                 html += `
                 <div class="mb-12 glass-card rounded-lg p-8 border-2 border-red-300 bg-red-50 shadow-md">
                     <div class="flex items-start gap-4">
-                        <div class="text-3xl flex-shrink-0">🎯</div>
+                        <div class="p-3 bg-red-100 rounded-lg text-red-600 flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+                        </div>
                         <div>
                             <h2 class="text-2xl font-bold text-red-900 mb-4">${qg.title}</h2>
                             <p class="text-red-800 font-semibold mb-3">${qg.description}</p>

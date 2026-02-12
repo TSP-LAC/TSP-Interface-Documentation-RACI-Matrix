@@ -15,7 +15,6 @@ const GUIDELINES_DATA = {
     sections: [
         {
             title: "Global Sections",
-            emoji: "📘",
             guidelines: [
                 {
                     id: "document-roles",
@@ -64,7 +63,6 @@ const GUIDELINES_DATA = {
         },
         {
             title: "Overview",
-            emoji: "📄",
             guidelines: [
                 {
                     id: "interface-title",
@@ -114,7 +112,6 @@ const GUIDELINES_DATA = {
         },
         {
             title: "EXPLORE – Functional Specification",
-            emoji: "🔎",
             guidelines: [
                 {
                     id: "fs-overview",
@@ -261,7 +258,6 @@ const GUIDELINES_DATA = {
         },
         {
             title: "EXPLORE – Mapping & Testing",
-            emoji: "🔢",
             guidelines: [
                 {
                     id: "field-mapping",
@@ -310,7 +306,6 @@ const GUIDELINES_DATA = {
         },
         {
             title: "REALIZE – Build & Testing",
-            emoji: "🛠",
             guidelines: [
                 {
                     id: "compliance-checklist",
@@ -365,7 +360,12 @@ const GUIDELINES_DATA = {
                         "Functional: Business validation",
                         "UAT: Final sign-off"
                     ]
-                },
+                }
+            ]
+        },
+        {
+            title: "Hypercare",
+            guidelines: [
                 {
                     id: "cloud-care",
                     title: "Cloud Care Log",
